@@ -4,8 +4,10 @@ const tasks = require("./routes/tasks");
 
 const port = 5000;
 
-app.use(express.static("public"));
+//middleware
+app.use(express.json());
 
+// routes
 app.get("/", (req, res) => {
   res.status(200).send("Welcome to node app!");
 });
