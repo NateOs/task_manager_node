@@ -1,8 +1,14 @@
+const Task = require("../models/Task");
+
 const getAllTasks = (req, res) => {
   res.send("all items");
 };
-const createTask = (req, res) => {
-  res.send("create task");
+
+// without async fxn, the status will be returned before the task
+// is created, hence an empty object
+const createTask = async (req, res) => {
+  const task = await Task.create(req.body);
+  res.status(201).json({ task });
 };
 const getSingleTask = (req, res) => {
   const id = req.params.id;
