@@ -9,6 +9,9 @@ const port = 5000;
 //middleware
 app.use(express.json());
 
+// serve static files
+app.use(express.static("./public"));
+
 // routes
 app.get("/", (req, res) => {
   res.status(200).send("Welcome to node app!");

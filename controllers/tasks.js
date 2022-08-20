@@ -42,6 +42,7 @@ const updateSingleTask = async (req, res) => {
     const task = await Task.findOneAndUpdate({ _id: taskId }, req.body, {
       new: true,
       runValidators: true,
+      useFindAndModify: false,
     });
 
     if (!task) {
