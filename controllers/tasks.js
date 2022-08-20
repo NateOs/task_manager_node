@@ -1,3 +1,4 @@
+const { response } = require("express");
 const Task = require("../models/Task");
 
 const getAllTasks = async (req, res) => {
@@ -46,6 +47,10 @@ const deleteTask = async (req, res) => {
     if (!task) {
       return res.status(404).json({ msg: `Task not found with ID: ${taskId}` });
     }
+    res.status(200).json({
+      task: task,
+      status: "deleted",
+    });
   } catch (error) {
     res.status(500).json({ msg: error });
   }
