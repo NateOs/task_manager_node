@@ -4,13 +4,16 @@ const connectDB = require("./db/connect");
 const express = require("express");
 const app = express();
 const tasks = require("./routes/tasks");
+const notFound = require("./middleware/notFound");
+
 const port = 5000;
 
-//middleware
+// middleware
 app.use(express.json());
+app.use(express.static("./public")); // serve static files
 
-// serve static files
-app.use(express.static("./public"));
+// 404 error handler middleware
+app.use(notFound);
 
 // routes
 app.get("/", (req, res) => {
