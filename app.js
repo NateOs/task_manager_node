@@ -12,15 +12,15 @@ const port = 5000;
 app.use(express.json());
 app.use(express.static("./public")); // serve static files
 
-// 404 error handler middleware
-app.use(notFound);
-
 // routes
 app.get("/", (req, res) => {
   res.status(200).send("Welcome to node app!");
 });
 
 app.use("/api/v1/tasks", tasks);
+
+// 404 error handler middleware
+app.use(notFound);
 
 const startServer = async () => {
   try {
