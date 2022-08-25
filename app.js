@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const tasks = require("./routes/tasks");
 const notFound = require("./middleware/notFound");
+const errorHandlerMiddleware = require("./middleware/error-handler");
 
 const port = 5000;
 
@@ -21,6 +22,7 @@ app.use("/api/v1/tasks", tasks);
 
 // 404 error handler middleware
 app.use(notFound);
+app.use(errorHandlerMiddleware);
 
 const startServer = async () => {
   try {
