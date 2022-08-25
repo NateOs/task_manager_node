@@ -7,7 +7,7 @@ const tasks = require("./routes/tasks");
 const notFound = require("./middleware/notFound");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
-const port = 5000;
+const port = process.env.PORT || 3000;
 
 // middleware
 app.use(express.json());
